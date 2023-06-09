@@ -1,6 +1,6 @@
-\newcommand\classname{frontiersHLTH} %this file is based in bioninfo.cls
-\newcommand\lastmodifieddate{2016/01/11}
-\newcommand\versionnumber{2.6}
+\newcommand\classname{frontiers_suppmat} %this file is based in bioinfo.cls
+\newcommand\lastmodifieddate{2017/05/01}
+\newcommand\versionnumber{2.2}
 
 % For printing crop marks
 \newif\if@cropmarkson \@cropmarksontrue
@@ -29,14 +29,13 @@
 \ProcessOptions
 
 % Load all necessary packages
-\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip}
+\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,epstopdf} 
+\usepackage{parskip}[=v1]
 \def\helvetica{\fontfamily{phv}\selectfont}
 \def\helveticaitalic{\fontfamily{phv}\itshape\selectfont}
 \def\helveticabold{\fontfamily{phv}\bfseries\selectfont}
 \def\helveticabolditalic{\fontfamily{phv}\bfseries\itshape\selectfont}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[labelsep=quad,indention=10pt]{caption}
-\usepackage[labelfont=bf,list=true]{subcaption}
 
 \newcommand\@ptsize{0}
 
@@ -57,6 +56,7 @@
    \let\@listi\@listI}
 \normalsize
 \let\@bls\baselineskip
+
 
 \newcommand\small{%
     \@setfontsize\small{11}{12}%
@@ -86,8 +86,6 @@
 \def\Huge{\@setfontsize\Huge{30pt}{30pt}}
 
 
-
-
 \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
 \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
 \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
@@ -100,6 +98,7 @@
 \setlength\lineskip{1\p@}
 \setlength\normallineskip{1\p@}
 \renewcommand\baselinestretch{}
+
 
 % Set inter-para skips
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}
@@ -234,15 +233,15 @@
         \hbox to \textwidth{\helveticabold\small {Frontiers}\hfill \thepage}%
         }}%
   \def\@evenfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
-        \hbox to \textwidth{\helvetica\small {\color{red}This is a provisional file, not the final typeset article}\hfill\helveticabold\color{black}\thepage}%
+        \hbox to \textwidth{\helvetica\small {}\hfill\helveticabold\color{black}\thepage}%
         }}%
-  \def\@evenhead{\vbox{\hbox to \textwidth{\fontsize{11}{10}\selectfont
+  \def\@evenhead{\vbox{\hbox to \textwidth{\fontsize{8}{10}\selectfont
         \helveticabold{\fontshape{it}\selectfont
-        \strut\firstAuthorLast}\hfill\strut\rightmark}\vspace{6.5\p@}\rule{\textwidth}{0.5\p@}}}%
-  \def\@oddhead{\vbox{\hbox to \textwidth{\fontsize{11}{10}\selectfont
-        \helveticabold{\fontshape{it}\selectfont
-        \strut\firstAuthorLast}\hfill\strut\rightmark}\vspace{6.5\p@}\rule{\textwidth}{0.5\p@}}}%
-  \def\titlemark##1{\markboth{##1}{##1}}%
+        \strut\leftmark}\hfill}\vspace{6.5\p@}\rule{\textwidth}{0.5\p@}}}%
+  \def\@oddhead{\vbox{\hbox to \textwidth{\hfill\fontsize{8}{10}\selectfont
+        \helveticabold{\fontshape{it}\selectfont\strut\rightmark}}%
+        \vspace{6.5\p@}\rule{\textwidth}{0.5\p@}}}%
+   \def\titlemark##1{\markboth{##1}{##1}}%
   \def\authormark##1{\gdef\leftmark{##1}}%
   }
 
@@ -315,6 +314,7 @@
     \clearpage
     \fi}
 
+
 %
 % Sectional units
 %
@@ -336,7 +336,7 @@
 \renewcommand\thesubsubsection{{\thesubsection.\arabic{subsubsection}}}
 \renewcommand\theparagraph{\thesubsubsection.\arabic{paragraph}}
 \renewcommand\thesubparagraph{\theparagraph.\arabic{subparagraph}}
-\renewcommand\theequation{\arabic{equation}}
+\renewcommand\theequation{S\arabic{equation}}
 
 % Form of the words
 \newcommand\contentsname{Contents}
@@ -372,7 +372,7 @@
   \clearpage
   \@mainmatterfalse}
 
-  \newdateformat{mydate}{\THEDAY \ \monthname[ \THEMONTH] \THEYEAR}
+  \newdateformat{mydate}{\THEDAY \ \monthname[\THEMONTH] \THEYEAR}
   \newdateformat{mydate2}{\monthname[\THEMONTH] \THEYEAR}
 
 %********
@@ -395,18 +395,12 @@
 \def\@@title#1{\authormark{#1}\@@@title{#1}}
 \long\def\@@@title#1{\gdef\@title{#1}}
 
-\long\def\author{\@ifnextchar[{\short@uthor}{\@uthor}}
-\def\short@uthor[#1]{\authormark{#1}\@@author}
-\def\@uthor#1{\authormark{#1}\@@author{#1}}
-\long\def\@@author#1{\gdef\@author{#1}}
 
 \def\vol#1{\global\def\@vol{#1}}
 \def\issue#1{\global\def\@issue{#1}}
 \def\address#1{\global\def\@issue{#1}}
 \def\history#1{\global\def\@history{#1}}
-\def\correspondance#1{\global\def\@correspondance{#1}}
-\def\extraAuth#1{\global\def\@extraAuth{#1}}
-\def\address#1{\global\def\@address{#1}}
+
 
 
 \def\date#1{\gdef\@date{#1}}
@@ -481,26 +475,14 @@
   \parbox[t]{15pc}{%
     \helvetica
     \hfil
-    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.pdf}
+    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.eps}
+
 
 }}
+
  \rule{\textwidth}{1\p@}\par%
   \helvetica
-  \hbox to \textwidth{%
-  \parbox[t]{36.5pc}{%
-    \vspace*{1sp}
     {\helveticabold\fontsize{20}{21}\color{black}\selectfont\raggedright \@title \par}%
-    \vspace{4.5\p@}
-    {\helveticabold\fontsize{12}{15}\selectfont\raggedright \@author \par}%
-        \vspace{4\p@}
-    {\helvetica\fontsize{12}{12}\selectfont\raggedright\slshape\@address \Address \\ \par}%
-      \vspace{6\p@}
-  {\helvetica\fontsize{12}{10}\selectfont\raggedright {Correspondence*:\\ }\@correspondance \corrAuthor \\ \corrEmail \par}
-        \vspace{4\p@}
-    {\helvetica\fontsize{12}{12}\selectfont\raggedright\@extraAuth \par}%
-    \vspace{8\p@}
-    }%
-  }
   \vspace{14.5\p@}%
   }
 
@@ -523,11 +505,6 @@
 \setcounter{secnumdepth}{5}
 
 \renewcommand{\@seccntformat}[1]{\csname the#1\endcsname\quad}
-
-\def\section{%
-  \@startsection{section}{1}{\z@}
-  {-10\p@ plus -3\p@}{3\p@}
-  {\reset@font\raggedright\helveticabold\fontsize{13}{13}\color{black}\selectfont\MakeUppercase}}
 
 \def\section{%
   \@startsection{section}{1}{\z@}
@@ -568,16 +545,25 @@
 \setlength\extrarowheight{\z@}
 \renewcommand\arraystretch{1}
 
-%\newlength{\abovecaptionskip}
-%\newlength{\belowcaptionskip}
-%\setlength{\abovecaptionskip}{13pt}
-%\setlength{\belowcaptionskip}{10.5pt}
+
+\newlength{\abovecaptionskip}
+\newlength{\belowcaptionskip}
+\setlength{\abovecaptionskip}{13pt}
+\setlength{\belowcaptionskip}{10.5pt}
+
 
 \long\def\@makecaption#1#2{\vspace{\abovecaptionskip}%
   \begingroup
   \normalsize
   \textbf{#1.}\enskip{#2}\par
   \endgroup}
+
+\long\def\@tablecaption#1#2{%
+  \begingroup
+  \footnotesize
+  \textbf{#1.}\enskip{#2\strut\par}
+  \endgroup\vspace{\belowcaptionskip}}
+
 
 % Table rules
 \def\toprule{\noalign{\ifnum0=`}\fi\hrule \@height 0.5pt \hrule \@height 6pt \@width 0pt \futurelet
@@ -588,7 +574,7 @@
    \@tempa\@xhline}
 \def\hrulefill{\leavevmode\leaders\hrule height .5pt\hfill\kern\z@}
 
-\def\thefigure{\@arabic\c@figure}
+\def\thefigure{S\@arabic\c@figure}
 \def\fps@figure{tbp}
 \def\ftype@figure{1}
 \def\ext@figure{lof}
@@ -597,14 +583,14 @@
 \let\endfigure\end@float
 \@namedef{figure*}{\@dblfloat{figure}}
 \@namedef{endfigure*}{\end@dblfloat}
-\def\thetable{\@arabic\c@table}
+\def\thetable{S\@arabic\c@table}
 \def\fps@table{tbp}
 \def\ftype@table{2}
 \def\ext@table{lot}
 \def\fnum@table{Table~\thetable}
-\def\table{\let\source\tablesource\@float{table}}
+\def\table{\let\@makecaption\@tablecaption\let\source\tablesource\@float{table}}
 \def\endtable{\end@float}
-\@namedef{table*}{\@dblfloat{table}}
+\@namedef{table*}{\let\@makecaption\@tablecaption\@dblfloat{table}}
 \@namedef{endtable*}{\end@dblfloat}
 
 \newif\if@rotate \@rotatefalse
@@ -860,8 +846,8 @@
       \setlength{\itemindent}{-4mm}}\small}
 {\end{list}\endgroup}
 
-\usepackage[numbers,round]{natbib}
-\renewcommand\@biblabel[1]{\textbf #1 .}
+\RequirePackage{natbib}
+
 
 % **********
 % Appendix *

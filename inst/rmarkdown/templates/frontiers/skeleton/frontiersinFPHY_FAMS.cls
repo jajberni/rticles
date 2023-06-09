@@ -1,4 +1,4 @@
-\newcommand\classname{frontiersFPHY} %this file is based in bioninfo.cls
+\newcommand\classname{frontiersinFPHY_FAMS} %this file is based in bioninfo.cls
 \newcommand\lastmodifieddate{2016/01/11}
 \newcommand\versionnumber{2.6}
 
@@ -29,7 +29,8 @@
 \ProcessOptions
 
 % Load all necessary packages
-\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,parskip}
+\RequirePackage{inputenc,crop,graphicx,amsmath,array,color,amssymb,flushend,stfloats,amsthm,chngpage,times,datetime,epstopdf} 
+\usepackage{parskip}[=v1] 
 \def\helvetica{\fontfamily{phv}\selectfont}
 \def\helveticaitalic{\fontfamily{phv}\itshape\selectfont}
 \def\helveticabold{\fontfamily{phv}\bfseries\selectfont}
@@ -234,7 +235,7 @@
         \hbox to \textwidth{\helveticabold\small {Frontiers}\hfill \thepage}%
         }}%
   \def\@evenfoot{\vbox to 12.5\p@{\rule{\textwidth}{0.5\p@}\vss
-        \hbox to \textwidth{\helvetica\small {\color{red}This is a provisional file, not the final typeset article}\hfill\helveticabold\color{black}\thepage}%
+        \hbox to \textwidth{\helveticabold\small {Frontiers}\hfill \thepage}%
         }}%
   \def\@evenhead{\vbox{\hbox to \textwidth{\fontsize{11}{10}\selectfont
         \helveticabold{\fontshape{it}\selectfont
@@ -483,7 +484,7 @@
  \parbox[t]{15pc}{%
     \helvetica
     \hfil
-    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.pdf}
+    \flushleft  \includegraphics[width=12pc,angle=0]{./logo1.eps}
 
 }}
 
@@ -534,22 +535,22 @@
 
 \def\subsection{%
   \@startsection{subsection}{2}{\z@}
-  {2\p@ plus -1\p@}{2\p@}
+  {4\p@ plus 2\p@}{2\p@}
   {\reset@font\raggedright\mathversion{bold}\helveticabold\fontsize{11.5}{12}}}
 
 \def\subsubsection{%
   \@startsection{subsubsection}{3}{\z@}
-  {1\p@ plus -1\p@}{1\p@}
+  {2\p@ plus 2\p@}{1\p@}
   {\reset@font\raggedright\mathversion{bold}\helvetica\fontsize{11.5}{12}}}
 
  \def\paragraph{%
    \@startsection{paragraph}{4}{\z@}
-  {1\p@ plus -1\p@}{1\p@}
+  {2\p@ plus 1\p@}{1\p@}
    {\reset@font\itshape\helveticabold\fontsize{11.5}{12}}}
 
  \def\subparagraph{%
    \@startsection{subparagraph}{5}{\z@}
-  {1\p@ plus -1\p@}{1\p@}
+  {2\p@ plus 1\p@}{1\p@}
    {\reset@font\itshape\helvetica\fontsize{11.5}{12}}}
 
 \def\textcolon{\text{\rm :}}
